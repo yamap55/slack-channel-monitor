@@ -1,0 +1,14 @@
+version: "3"
+services:
+  slack-channel-monitor:
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+      args:
+        WORKDIR: /project
+    volumes:
+      - ..:/project
+    image: slack-channel-monitor-image
+    container_name: slack-channel-monitor
+    tty: true
+    env_file: ../.env # shellスクリプト内でも環境変数として使用するため
