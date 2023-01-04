@@ -24,7 +24,7 @@ export const workflow = DefineWorkflow({
   },
 });
 
-const convertStringFromDate = (unixtime) => {
+const _convertStringFromDate = (unixtime) => {
   console.log(parseInt(unixtime, 10));
   const date = new Date(parseInt(unixtime, 10) * 1000);
   const zeroPadding = (s: number) => (`0${s}`).slice(-2);
@@ -43,7 +43,7 @@ const createMessage = (inputs): string => {
   const channel_type = `チャンネル種別: ${inputs.channel_type}`;
   // 作成日は「workflow.inputs.created」で文字列のunixtimeが取得可能だが、変換できなかったため割愛
   // 技術力不足かAPIのバグか
-  // convertStringFromDate(inputs.created)
+  // _convertStringFromDate(inputs.created)
   return [creator, channel_name, channel_type].join("\n");
 };
 workflow.addStep(Schema.slack.functions.SendMessage, {
