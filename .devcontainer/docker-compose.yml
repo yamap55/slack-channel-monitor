@@ -11,4 +11,3 @@ services:
     image: slack-channel-monitor-image
     container_name: slack-channel-monitor
     tty: true
-    env_file: ../.env # shellスクリプト内でも環境変数として使用するため
