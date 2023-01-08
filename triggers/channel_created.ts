@@ -10,6 +10,7 @@ const trigger: Trigger<typeof NotifyWorkflow.definition> = {
     channel_id: { value: "{{data.channel_id}}" },
     user_id: { value: "{{data.creator_id}}" },
     event_type: { value: "channel_created" },
+    channel_type: { value: "{{data.channel_type}}" },
   },
 };
 

@@ -10,10 +10,16 @@ const _TOP_MESSAGE_LIST: Map<string, string> = new Map([
   ["channel_unarchived", "チャンネルがアーカイブから復活しました :superhero:"],
 ]);
 
-const createMessage = (user_id: string, channel_id: string, event_type: string): string => {
+const createMessage = (
+  user_id: string,
+  channel_id: string,
+  event_type: string,
+  channel_type: string,
+): string => {
   const user = `実施者: <@${user_id}>`;
   const channel_name = `チャンネル名: <#${channel_id}>`;
-  const base_message = [user, channel_name].join("\n");
+  const _channel_type = `チャンネル種別: ${channel_type}`;
+  const base_message = [user, channel_name, _channel_type].join("\n");
   const top_message = _TOP_MESSAGE_LIST.get(event_type);
   return `${top_message}\n\n${base_message}`;
 };
@@ -38,8 +44,12 @@ export const CreateSendMessageFunction = DefineFunction({
         type: Schema.types.string,
         description: "Event Type",
       },
+      channel_type: {
+        type: Schema.types.string,
+        description: "Channel Type",
+      },
     },
-    required: ["user_id", "channel_id", "event_type"],
+    required: ["user_id", "channel_id", "event_type", "channel_type"],
   },
   output_parameters: {
     properties: {
@@ -55,7 +65,12 @@ export const CreateSendMessageFunction = DefineFunction({
 export default SlackFunction(
   CreateSendMessageFunction,
   ({ inputs }) => {
-    const send_message = createMessage(inputs.user_id, inputs.channel_id, inputs.event_type);
+    const send_message = createMessage(
+      inputs.user_id,
+      inputs.channel_id,
+      inputs.event_type,
+      inputs.channel_type,
+    );
     return { outputs: { send_message } };
   },
 );

@@ -9,11 +9,13 @@ const NotifyWorkflow = DefineWorkflow({
       channel_id: { type: Schema.slack.types.channel_id },
       user_id: { type: Schema.slack.types.user_id },
       event_type: { type: Schema.types.string },
+      channel_type: { type: Schema.types.string },
     },
     required: [
       "channel_id",
       "user_id",
       "event_type",
+      "channel_type",
     ],
   },
 });
@@ -24,6 +26,7 @@ const message = NotifyWorkflow.addStep(
     user_id: NotifyWorkflow.inputs.user_id,
     channel_id: NotifyWorkflow.inputs.channel_id,
     event_type: NotifyWorkflow.inputs.event_type,
+    channel_type: NotifyWorkflow.inputs.channel_type,
   },
 );
 
