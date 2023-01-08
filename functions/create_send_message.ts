@@ -7,7 +7,7 @@ const _TOP_MESSAGE_LIST: Map<string, string> = new Map([
   ["channel_renamed", "チャンネル名が変更されました :pencil2:"],
   ["channel_deleted", "チャンネルが削除されました :wastebasket:"],
   ["channel_archived", "チャンネルがアーカイブされました :headstone:"],
-  ["channel_unarchived", "チャンネルがアーカイブから復活しました :superhero:"],
+  ["channel_unarchived", "チャンネルがアーカイブから復元されました :superhero:"],
 ]);
 
 const createMessage = (
