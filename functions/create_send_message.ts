@@ -1,6 +1,4 @@
-import { SlackFunction } from "deno-slack-sdk/mod.ts";
-
-import { DefineFunction, Schema } from "deno-slack-sdk/mod.ts";
+import { DefineFunction, Schema, SlackFunction } from "deno-slack-sdk/mod.ts";
 
 const _TOP_MESSAGE_LIST: Map<string, string> = new Map([
   ["channel_created", "新しいチャンネルが作成されました :clap:"],
@@ -30,7 +28,6 @@ export const CreateSendMessageFunction = DefineFunction({
   description: "Create Send Message",
   source_file: "functions/create_send_message.ts",
   input_parameters: {
-    // user_id: string, channel_id: string, event_type: string)
     properties: {
       user_id: {
         type: Schema.types.string,
