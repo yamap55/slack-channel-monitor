@@ -1,6 +1,8 @@
 import { DefineWorkflow, Schema } from "deno-slack-sdk/mod.ts";
 import { CreateSendMessageFunction } from "../functions/create_send_message.ts";
 
+import { GetNotifyChannelFunction } from "../functions/get_notify_channel.ts";
+
 const NotifyWorkflow = DefineWorkflow({
   callback_id: "channel_monitor_workflow",
   title: "Channel Monitor Workflow",
@@ -30,8 +32,10 @@ const message = NotifyWorkflow.addStep(
   },
 );
 
+const notify_channel_id = NotifyWorkflow.addStep(GetNotifyChannelFunction, {});
+
 NotifyWorkflow.addStep(Schema.slack.functions.SendMessage, {
-  channel_id: "C04H8294NUB", // 既定のチャンネルに投稿する
+  channel_id: notify_channel_id.outputs.notify_channel_id,
   message: message.outputs.send_message,
 });
 
