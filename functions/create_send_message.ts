@@ -19,7 +19,7 @@ const createMessage = (
   const user = `実施者: <@${user_id}>`;
   const channel_name = `チャンネル名: <#${channel_id}>`;
   const _channel_type = `チャンネル種別: ${channel_type}`;
-  const base_message = [user, channel_name, _channel_type].join("\n");
+  const base_message = [channel_name, _channel_type, user].join("\n");
   const top_message = _TOP_MESSAGE_LIST.get(event_type);
   return `${top_message}\n\n${base_message}`;
 };
