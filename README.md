@@ -46,3 +46,9 @@ slack env add NOTIFY_CHANNEL_ID [CHANNEL_ID_TO_NOTIFY]
 5. しばらく待つ
    - 初回の場合コンテナー image の取得や作成が行われる
 6. 起動したら開発可能
+
+## その他
+- lint
+  - `deno lint`
+- unittest
+  - `deno test`
