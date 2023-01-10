@@ -48,6 +48,7 @@ slack env add NOTIFY_CHANNEL_ID [CHANNEL_ID_TO_NOTIFY]
 6. 起動したら開発可能
 
 ## その他
+
 - lint
   - `deno lint`
 - unittest
