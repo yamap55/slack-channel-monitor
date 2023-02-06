@@ -1,4 +1,4 @@
-FROM denoland/deno:debian-1.30.1
+FROM denoland/deno:debian-1.30.2
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=Asia/Tokyo
 RUN echo $TZ > /etc/timezone
